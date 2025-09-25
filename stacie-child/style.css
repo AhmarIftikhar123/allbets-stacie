@@ -1,0 +1,27 @@
+/*
+ Theme Name:   Stacie Child
+ Theme URI:    http://example.com/stacie-child
+ Description:  Child theme for the Stacie theme
+ Author:       Ahmar Iftikhar Hussain
+ Author URI:   http://example.com
+ Template:     stacie
+ Version:      1.0.0
+*/
+/* Grid helpers for shortcode */
+.ms-cards {
+  display: grid;
+  gap: 1.25rem;
+}
+.ms-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ms-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ms-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 1024px) {
+  .ms-cols-4, .ms-cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .ms-cols-4, .ms-cols-3, .ms-cols-2 { grid-template-columns: 1fr; }
+}
+
+/* Import parent styles */
+@import url("../stacie/style.css");
