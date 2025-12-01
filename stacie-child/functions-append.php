@@ -102,57 +102,67 @@ function ms_get_featured_blog_post_id()
 // [blog_grid category="news"]              -> only 'news' category (slug) from blog_category taxonomy
 // [blog_grid featured_only="1"]            -> only posts with ms_featured=1
 // [blog_grid orderby="date" order="DESC"]  -> ordering control
-
+// Register CSS if not already
 add_action('init', function () {
-    // Register a style handle so we can enqueue it inside the shortcode too.
-    $css_path = get_stylesheet_directory() . '/assets/blog.css';
-    $css_uri  = get_stylesheet_directory_uri() . '/assets/blog.css';
-    if (file_exists($css_path)) {
-        wp_register_style('ms-blog-css', $css_uri, [], filemtime($css_path));
+    $path = get_stylesheet_directory() . '/assets/blog.css';
+    if (file_exists($path)) {
+        wp_register_style('ms-blog-css', get_stylesheet_directory_uri() . '/assets/blog.css', [], filemtime($path));
     }
 });
 
-function ms_blog_grid_shortcode($atts = [])
+/**
+ * Shortcode: [blog_grid]
+ * Examples:
+ * [blog_grid paginate="1" count="3" columns="1"]
+ * [blog_grid paginate="1" count="6" columns="3" category="news"]
+ */
+function ms_blog_grid_shortcode_paged($atts = [])
 {
-    // Ensure CSS is present even outside archive/single
     if (wp_style_is('ms-blog-css', 'registered')) {
         wp_enqueue_style('ms-blog-css');
     }
 
-    $atts = shortcode_atts([
-        'count'         => 6,
-        'columns'       => 3,
-        'category'      => '',     // blog_category taxonomy slug
-        'featured_only' => '0',    // 1 to show only ms_featured=1
+    $a = shortcode_atts([
+        'count'         => 6,           // posts per page
+        'columns'       => 3,           // 1-4
+        'category'      => '',          // blog_category slug
+        'featured_only' => '0',         // 1 = only ms_featured=1
         'orderby'       => 'date',
         'order'         => 'DESC',
+        'paginate'      => '0',         // 1 = show pagination
+        'query_arg'     => 'bg',        // querystring key prefix to avoid clashes
     ], $atts, 'blog_grid');
+
+    $paginate = $a['paginate'] === '1';
+
+    // figure out current page (works inside pages too)
+    $page_param = sanitize_key($a['query_arg']) . '_page';
+    $page = 1;
+    if (isset($_GET[$page_param])) {
+        $page = max(1, intval($_GET[$page_param]));
+    } else {
+        $page = max(1, get_query_var('paged') ? intval(get_query_var('paged')) : (get_query_var('page') ? intval(get_query_var('page')) : 1));
+    }
 
     $args = [
         'post_type'      => 'blog',
-        'posts_per_page' => intval($atts['count']),
-        'orderby'        => sanitize_key($atts['orderby']),
-        'order'          => $atts['order'] === 'ASC' ? 'ASC' : 'DESC',
+        'posts_per_page' => intval($a['count']),
+        'orderby'        => sanitize_key($a['orderby']),
+        'order'          => ($a['order'] === 'ASC') ? 'ASC' : 'DESC',
+        'paged'          => $paginate ? $page : 1,
+        'no_found_rows'  => $paginate ? false : true,
         'meta_query'     => [],
         'tax_query'      => [],
-        'no_found_rows'  => true, // faster (no pagination here)
     ];
 
-    // Featured only filter
-    if ($atts['featured_only'] === '1') {
-        $args['meta_query'][] = [
-            'key'     => 'ms_featured',
-            'value'   => '1',
-            'compare' => '=',
-        ];
+    if ($a['featured_only'] === '1') {
+        $args['meta_query'][] = ['key' => 'ms_featured', 'value' => '1', 'compare' => '='];
     }
-
-    // Category filter (taxonomy: blog_category)
-    if (!empty($atts['category'])) {
+    if (!empty($a['category'])) {
         $args['tax_query'][] = [
             'taxonomy' => 'blog_category',
             'field'    => 'slug',
-            'terms'    => sanitize_title($atts['category']),
+            'terms'    => sanitize_title($a['category']),
         ];
     }
 
@@ -161,30 +171,21 @@ function ms_blog_grid_shortcode($atts = [])
         return '<div class="ms-cards"><p>No articles found.</p></div>';
     }
 
-    // Columns class helper (falls back to 3)
-    $cols = (int)$atts['columns'];
-    if ($cols < 1 || $cols > 4) {
-        $cols = 3;
-    }
+    $cols = (int)$a['columns'];
+    if ($cols < 1 || $cols > 4) $cols = 3;
     $grid_class = 'ms-cards ms-cols-' . $cols;
 
     ob_start();
     echo '<div class="' . esc_attr($grid_class) . '">';
     while ($q->have_posts()) {
         $q->the_post();
-        // Reuse your card partial if present
         $tpl = locate_template('template-parts/content-blog-card.php');
         if ($tpl) {
-            // Let the partial render the card
             get_template_part('template-parts/content', 'blog-card');
-        } else {
-            // Fallback minimal card (in case partial not found)
-?>
+        } else { ?>
             <article class="ms-card">
                 <a class="ms-thumb" href="<?php the_permalink(); ?>">
-                    <?php if (has_post_thumbnail()) {
-                        the_post_thumbnail('medium_large', ['loading' => 'lazy']);
-                    } ?>
+                    <?php if (has_post_thumbnail()) the_post_thumbnail('medium_large', ['loading' => 'lazy']); ?>
                 </a>
                 <div class="ms-card-body">
                     <div class="ms-meta"><?php echo esc_html(get_the_date()); ?></div>
@@ -192,15 +193,46 @@ function ms_blog_grid_shortcode($atts = [])
                     <p class="ms-excerpt"><?php echo esc_html(wp_trim_words(get_the_excerpt(), 22)); ?></p>
                 </div>
             </article>
-    <?php
-        }
+    <?php }
     }
     echo '</div>';
-    wp_reset_postdata();
 
+    // Pagination
+    if ($paginate) {
+        $total = (int)$q->max_num_pages;
+        if ($total > 1) {
+            // Build base URL with custom page param
+            $base = remove_query_arg($page_param);
+            $base = add_query_arg($page_param, '%#%', $base);
+
+            $links = paginate_links([
+                'base'      => $base,
+                'format'    => '', // we’re using custom query arg
+                'current'   => $page,
+                'total'     => $total,
+                'mid_size'  => 1,
+                'end_size'  => 1,
+                'prev_text' => '&laquo;',
+                'next_text' => '&raquo;',
+                'type'      => 'array',
+            ]);
+
+            if ($links) {
+                echo '<nav class="ms-pagination" aria-label="Pagination"><ul>';
+                foreach ($links as $li) {
+                    // add class for current page
+                    $is_current = strpos($li, 'current') !== false;
+                    echo '<li class="' . ($is_current ? 'is-current' : '') . '">' . $li . '</li>';
+                }
+                echo '</ul></nav>';
+            }
+        }
+    }
+
+    wp_reset_postdata();
     return ob_get_clean();
 }
-add_shortcode('blog_grid', 'ms_blog_grid_shortcode');
+add_shortcode('blog_grid', 'ms_blog_grid_shortcode_paged');
 
 // --- Register CSS for CTA banner ---
 add_action('init', function () {

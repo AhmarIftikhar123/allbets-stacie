@@ -1,0 +1,56 @@
+// === Shortcode: [blog_grid] ===
+// Usage examples:
+// [blog_grid]                              -> default 6 posts, 3 columns
+// [blog_grid count="9" columns="3"]        -> 9 posts, 3 columns
+// [blog_grid category="news"]              -> only 'news' category (slug) from blog_category taxonomy
+// [blog_grid featured_only="1"]            -> only posts with ms_featured=1
+// [blog_grid orderby="date" order="DESC"]  -> ordering control
+
+
+// --- Shortcode: [ms_cta] ---
+/*
+Usage examples:
+
+[ms_cta
+  title1="ACT LIKE A"
+  title1_accent="LADY"
+  title2="BET BETTER THAN A"
+  title2_accent="MAN!"
+  desc="Discover the empowering insights behind Act Like a Lady, Bet Better Than a Man..."
+  btn_text="Get Started"
+  btn_url="#"
+  img_id="123"
+  img_pos="left"   (left|right|none)
+]
+
+Tip: Media → upload ball image, note its ID, use as img_id.
+*/
+
+
+
+// --- Shortcode: [product_grid] ---
+// Display Products (from "ms_product" post type) in a responsive card grid.
+
+// Usage examples:
+
+// [product_grid]
+// -> default 6 products, 3 columns, pagination ON
+
+// [product_grid count="9" columns="3"]
+// -> show 9 products, 3 columns grid
+
+// [product_grid count="12" columns="4" paged="false"]
+// -> 12 products, 4 columns, NO pagination
+
+// [product_grid paged="true"]
+// -> enable pagination (default enabled)
+
+// ---- Attributes Reference ----
+// count="6"          number of products to show
+// columns="3"        2, 3, or 4 column grid using theme's ms-cols-* classes
+// paged="true/false" enable or disable pagination
+
+// ---- Notes ----
+// • Card layout is loaded from: template-parts/products/content-product-card.php
+// • Grid styling uses existing theme classes: .ms-cards + .ms-cols-*
+// • Products support: title, featured image, description, external link (via meta box)

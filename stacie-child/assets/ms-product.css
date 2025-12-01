@@ -1,0 +1,404 @@
+/* Product Card Specific Styles */
+
+.ms-product-card {
+  text-align: center;
+}
+
+.ms-product-card .ms-card-body {
+  padding: 20px 16px 14px;
+}
+
+/* Logo/Icon Styling */
+.ms-product-logo {
+  margin: 0 auto 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.ms-logo-placeholder {
+  width: 48px;
+  height: 48px;
+  background: #f5b21d;
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Title Styling */
+.ms-product-card .ms-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.ms-product-card .ms-card-title a {
+  color: #111;
+  text-decoration: none;
+}
+
+.ms-product-card .ms-card-title a:hover {
+  color: #f5b21d;
+}
+
+/* Subtitle Styling */
+.ms-product-subtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888;
+  margin: 0 0 16px;
+}
+
+/* Product Image */
+.ms-product-card .ms-thumb {
+  display: block;
+  margin: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.ms-product-card .ms-thumb img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Description */
+.ms-product-card .ms-card-excerpt {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 16px;
+}
+
+/* Button */
+.ms-product-btn {
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ms-product-card .ms-card-title {
+    font-size: 1.1rem;
+  }
+
+  .ms-product-card .ms-thumb img {
+    height: 220px;
+  }
+}
+/* Product Archive Page */
+.ms-product-archive {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.ms-archive-container {
+  width: 100%;
+}
+
+.ms-archive-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ms-archive-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px;
+}
+
+.ms-archive-desc {
+  font-size: 1.1rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Product Card - Clean Minimal Design */
+
+.ms-product-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Product Image */
+.ms-product-image {
+  display: block;
+  width: 100%;
+  background: #f9fafb;
+  position: relative;
+  overflow: hidden;
+}
+
+.ms-product-image img {
+  width: 100%;
+  height: 280px;
+  /* object-fit: cover; */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ms-product-card:hover .ms-product-image img {
+  transform: scale(1.02);
+}
+
+.ms-product-placeholder {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content Area */
+.ms-product-content {
+  position: relative;
+  text-align: left;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Title */
+.ms-product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 3px;
+  line-height: 1.4;
+}
+
+/* Subtitle (small text under title) */
+.ms-product-subtitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 0 0 2px;
+  font-weight: 500;
+}
+
+/* Footer: Description + Arrow */
+.ms-product-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* Description */
+.ms-product-desc {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* Arrow Link */
+.ms-product-arrow {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111827;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.ms-product-arrow:hover {
+  border: 1px solid currentColor;
+  color: #111827;
+  background: #fff;
+  transform: translateX(2px) translateY(-2px);
+}
+
+.ms-product-arrow svg {
+  display: block;
+}
+
+/* Grid Layout for Products */
+.ms-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Column Override Classes */
+.ms-cols-1 {
+  grid-template-columns: 1fr;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ms-cols-2 {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.ms-cols-3 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.ms-cols-4 {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ms-product-image img,
+  .ms-product-placeholder {
+    height: 220px;
+  }
+
+  .ms-product-content {
+    padding: 16px;
+  }
+
+  .ms-product-title {
+    font-size: 1rem;
+  }
+
+  .ms-product-desc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .ms-product-grid,
+  .ms-cols-2,
+  .ms-cols-3,
+  .ms-cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .ms-archive-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Pagination Styles for Products */
+.ms-product-archive .ms-pagination {
+  margin-top: 40px;
+}
+
+.ms-pagination {
+  margin: 28px 0;
+  text-align: center;
+}
+
+.ms-pagination ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ms-pagination a,
+.ms-pagination span {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #111827;
+  transition: all 0.2s ease;
+}
+
+.ms-pagination a:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.ms-pagination .current {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+.ms-product-desc {
+  max-height: 3.2em; /* approx 2 lines */
+  line-height: 1.6em;
+  overflow: hidden;
+  position: relative;
+  color: #444;
+  transition: max-height 0.35s ease;
+}
+
+.ms-product-desc.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ms-product-desc.expanded {
+  max-height: 2000px; /* enough space for full text */
+  -webkit-line-clamp: unset;
+}
+.ms-product-desc:hover ~ .ms-product-toggle , .ms-product-toggle:hover {
+  opacity: 1;
+}
+.ms-product-toggle {
+  opacity: 0;
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 2px;
+  font-size: 16px;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.ms-product-toggle.active {
+  bottom: 0 !important;
+}
+.ms-product-toggle.active i {
+  transform: rotate(180deg);
+}

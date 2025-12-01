@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The header for our theme
  *
@@ -13,29 +12,29 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
-
 <head>
-  <meta charset="<?php bloginfo('charset'); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="profile" href="https://gmpg.org/xfn/11">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-  <?php wp_head(); ?>
-  <title><?php the_title(); ?></title>
-  <link href="<?php echo bloginfo('template_directory'); ?>/images/favicon.png" rel="shortcut icon">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/owl.carousel.min.css">
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/custom.css" type="text/css" />
-  <link href="<?php echo bloginfo('template_directory'); ?>/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_directory'); ?>/css/simplelightbox.min.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_directory'); ?>/css/menu.css">
-
-  <style>
-    <?php //$logo1 = get_the_ID();
-    ///if($logo1 == 219 || $logo1 == 217){
-    ?>
-    /*     .logo-animation{
+	<?php wp_head(); ?>
+	<title><?php the_title(); ?></title>
+<link href="<?php echo bloginfo('template_directory'); ?>/images/favicon.png" rel="shortcut icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/owl.carousel.min.css">
+<link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="<?php echo bloginfo('template_directory'); ?>/css/custom.css" type="text/css" />
+<link href="<?php echo bloginfo('template_directory'); ?>/css/bootstrap.min.css" rel="stylesheet" >
+<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_directory'); ?>/css/simplelightbox.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('template_directory'); ?>/css/menu.css">
+	
+	<style>
+		
+	<?php //$logo1 = get_the_ID();
+	///if($logo1 == 219 || $logo1 == 217){
+	?>
+/*     .logo-animation{
        width: 150px;
       height: 122px;
       background-image : url("<?php echo home_url(); ?>/wp-content/uploads/2021/01/All-Bets-Logo-Sprite-Image-Sport.png");
@@ -45,56 +44,57 @@
       from{background-position-x:0px;}
       to{background-position-x:-600px;}
     } */
-    <?php //} else { 
-    ?>
-    /*          .logo-animation{
+    <?php //} else { ?>
+/*          .logo-animation{
        width: 150px;
       height: 122px;
-      background-image : url(<?php the_field('header_logo', 'option'); ?>);
+      background-image : url(<?php the_field('header_logo','option');?>);
       animation: moveX 1s steps(4) infinite
          }
           @keyframes moveX{
       from{background-position-x:0px;}
       to{background-position-x:-600px;}
     } */
-    <?php
-    //     }
+        <?php
+//     }
     ?>
-  </style>
-
+		
+		
+</style>
+	
 </head>
 
 <body <?php body_class(); ?>>
-  <?php wp_body_open(); ?>
-  <header id="header">
-    <!--------------------------------------  top menu --------------------------------------->
-    <div class="container">
-      <div class="header-top">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="topinfo-text">
-              <p><?php the_field('header_top_text', 'option'); ?></p>
-            </div>
+<?php wp_body_open(); ?>
+<header id="header" >
+  <!--------------------------------------  top menu --------------------------------------->
+  <div class="container">
+    <div class="header-top">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="topinfo-text">
+            <p><?php the_field('header_top_text','option');?></p>
           </div>
-          <div class="col-sm-6">
-            <div class="topinfo"> <a href="#"><span class="hide-sm"><i class="fa fa-phone"></i> <?php the_field('header_call_us', 'option'); ?></span></a> <a href="#"><span class="hide-sm"><i class="fa fa-envelope-o"></i><?php the_field('header_email', 'option'); ?></span></a> </div>
-          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="topinfo"> <a href="#"><span class="hide-sm"><i class="fa fa-phone"></i> <?php the_field('header_call_us','option');?></span></a> <a href="#"><span class="hide-sm"><i class="fa fa-envelope-o"></i><?php the_field('header_email','option');?></span></a> </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12  ">
-          <nav id="cssmenu">
-            <div class="logo logo-section">
-              <div class="logo-animation"></div>
-              <a href="<?php echo site_url(); ?>"><img src="<?php the_field('header_logo', 'option'); ?>" alt="" /> </a>
-
-            </div>
-            <div id="head-mobile"></div>
-            <div class="button"></div>
-            <?php
-            /*wp_nav_menu(
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12  ">
+        <nav id="cssmenu">
+          <div class="logo logo-section">
+			  <div class="logo-animation"></div>
+			  <a href="<?php echo site_url(); ?>"><img src="<?php the_field('header_logo','option');?>" alt=""/> </a>
+			
+			</div>
+			                        <div id="head-mobile"></div>
+                        <div class="button"></div>
+          <?php
+/*wp_nav_menu(
     array(
         'theme_location' => 'menu-1',
         'menu'           => 'header_menu',
@@ -102,37 +102,35 @@
         //'menu_class'     => 'navbar-nav main-nave'
     )
 );*/
-            ?>
-            <ul>
-              <li><a href="<?php echo site_url(); ?>">Home</a></li>
-              <li><a href="<?php echo site_url('blog-2'); ?>">Blog</a></li>
+?>
+           <ul>
+            <li><a href="<?php echo site_url(); ?>">Home</a></li>
+           <!--  <li ><a class="mobile-menu-ico state_info"  href="#">Our Services</a></li> -->
+           <!-- <li ><a class="mobile-menu-ico About_all_bets"  href="#">Our Services</a></li> -->
+            <!-- <li ><a class="mobile-menu-ico how_to_bet"  href="#">Projects </a></li> -->
+           <!--  <li ><a class="mobile-menu-ico About_all_bets"  href="<?php echo site_url('contact-us') ?>">Contact Us</a></li> -->
+            <!-- <li ><a class="mobile-menu-ico responsible_gaming"  href="#">Responsible Gaming</a></li> -->
 
-              <!--  <li ><a class="mobile-menu-ico state_info"  href="#">Our Services</a></li> -->
-              <!-- <li ><a class="mobile-menu-ico About_all_bets"  href="#">Our Services</a></li> -->
-              <!-- <li ><a class="mobile-menu-ico how_to_bet"  href="#">Projects </a></li> -->
-              <!--  <li ><a class="mobile-menu-ico About_all_bets"  href="<?php echo site_url('contact-us') ?>">Contact Us</a></li> -->
-              <!-- <li ><a class="mobile-menu-ico responsible_gaming"  href="#">Responsible Gaming</a></li> -->
-
-              <li><a href="<?php echo site_url('contact-us') ?>">Contact Us</a></li>
-            </ul>
-          </nav>
-          <div class="searchbar-wrapper">
-            <div class="searchbar">
-              <?php get_search_form(); ?>
-              <!-- <input class="search_input" type="text" name="" placeholder="Search...">
+            <li><a href="<?php echo site_url('contact-us') ?>">Contact Us</a></li>
+          </ul> 
+        </nav>
+        <div class="searchbar-wrapper">
+          <div class="searchbar">
+            <?php get_search_form(); ?>
+            <!-- <input class="search_input" type="text" name="" placeholder="Search...">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>  -->
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <!--------------------------------------  top menu --------------------------------------->
-  </header>
-  <div class="main-sidemenu mobile-nav right-side">
-    <div class="close-btn">Close <i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    <div id="accordion">
+  </div>
+  <!--------------------------------------  top menu --------------------------------------->
+</header>
+<div class="main-sidemenu mobile-nav right-side">
+<div class="close-btn">Close <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+<div id="accordion">
 
-      <!-- <div class="card">
+  <!-- <div class="card">
     <div class="card-header" id="heading-1">
       <h5 class="mb-0">
         <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
@@ -485,44 +483,44 @@
     </div>
   </div> -->
 
-      <div class="card">
-        <div class="card-header" id="heading-2">
-          <h5 class="mb-0">
-            <!-- <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+  <div class="card">
+    <div class="card-header" id="heading-2">
+      <h5 class="mb-0">
+        <!-- <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
         
         <span class="btn-icon"><i class="fa fa-usd fa-angle-down" aria-hidden="true"></i></span>
        <div class="btn-icon-txt"><strong>Projects</strong>
          <small>Learn Projects and get answers to any questions</small>
          </div>	
         </a> -->
-
-
-
-
-
-          </h5>
-        </div>
-        <div id="collapse-2" class="collapse" data-parent="#accordion" aria-labelledby="heading-2">
-          <div class="card-body">
-            <?php
-            wp_nav_menu(
-              array(
-                'theme_location' => 'menu-4',
-                'menu'           => 'how to bet',
-                'menu_class'      => 'sublist-container',
-              )
-            );
-            ?>
-
-          </div>
-        </div>
+        
+        
+ 
+        
+        
+      </h5>
+    </div>
+    <div id="collapse-2" class="collapse" data-parent="#accordion" aria-labelledby="heading-2">
+      <div class="card-body">
+        <?php
+        wp_nav_menu(
+        array(
+        'theme_location' => 'menu-4',
+        'menu'           => 'how to bet',
+        'menu_class'      => 'sublist-container',
+        )
+        );
+        ?>
+     
       </div>
-
-      <div class="card">
-        <div class="card-header" id="heading-3">
-          <h5 class="mb-0">
-
-            <!-- <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-header" id="heading-3">
+      <h5 class="mb-0">
+        
+        <!-- <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
         
         <span class="btn-icon"><i class="fa fa-info fa-angle-down" aria-hidden="true"></i></span>
        <div class="btn-icon-txt"><strong>Our Services</strong>
@@ -530,26 +528,26 @@
          </div>	
         </a>
          -->
-
-          </h5>
-        </div>
-        <div id="collapse-3" class="collapse" data-parent="#accordion" aria-labelledby="heading-3">
-          <div class="card-body">
-            <?php
-            wp_nav_menu(
-              array(
-                'theme_location' => 'menu-5',
-                'menu'           => 'About all Bets',
-                'menu_class'      => 'sublist-container',
-              )
-            );
-            ?>
-
-          </div>
-        </div>
+        
+      </h5>
+    </div>
+    <div id="collapse-3" class="collapse" data-parent="#accordion" aria-labelledby="heading-3">
+      <div class="card-body">
+          <?php
+        wp_nav_menu(
+        array(
+        'theme_location' => 'menu-5',
+        'menu'           => 'About all Bets',
+        'menu_class'      => 'sublist-container',
+        )
+        );
+        ?>
+           
       </div>
-
-      <!-- <div class="card">
+    </div>
+  </div> 
+  
+  <!-- <div class="card">
     <div class="card-header" id="heading-4">
       <h5 class="mb-0">
         
@@ -586,9 +584,10 @@
 </ul>
       </div>
     </div>
-  </div>  -->
-
-    </div>
-
-
-  </div>
+  </div>  --> 
+  
+</div>
+  
+  
+</div>
+					

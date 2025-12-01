@@ -56,3 +56,12 @@ body{
   .ms-cta{ flex-direction:column; padding:22px 16px; }
   .ms-cta-img{ width:30px; }
 }
+/* Pagination */
+.ms-pagination{ margin:18px 0; text-align:center; }
+.ms-pagination ul{ list-style:none; padding:0; margin:0; display:inline-flex; gap:8px; flex-wrap:wrap; }
+.ms-pagination a,
+.ms-pagination span{
+  display:inline-block; padding:6px 10px; border:1px solid #e5e7eb; border-radius:6px; text-decoration:none;
+}
+.ms-pagination a:hover{ background:#f3f4f6; }
+.ms-pagination .is-current span{ background:#111827; color:#fff; border-color:#111827; }
